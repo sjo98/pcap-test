@@ -54,9 +54,9 @@ int main(int argc, char* argv[]){
 		
 		memcpy(&eth, packet, sizeof(struct eth_struct));
 		if(eth.eth_type[0]==0x08 && eth.eth_type[1]==0x00 && eth.ip.ID==0x06){
-			ip_header = (int) (eth.ip.verihl & 0x0f);
+			ip_header = (int) (eth.ip.verihl & 0x0f)*4;
 			memcpy(&tcp, packet+14+ip_header, sizeof(struct tcp_struct));
-			tcp_header = (int)((tcp.lenandres & 0xf0)>>4);
+			tcp_header = (int)((tcp.lenandres & 0xf0)>>4)*4;
 			memcpy(data, packet + 14+ ip_header + tcp_header, sizeof(data));
 	
 			
