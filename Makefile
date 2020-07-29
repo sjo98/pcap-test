@@ -1,12 +1,12 @@
-all : pcap_test
+all : pcap-test
 
-pcap_test: main.o
-	g++ -g -o pcap_test main.o -lpcap
+pcap-test: main.o
+	g++ -g -o pcap-test main.o -lpcap
 
 main.o:
 	g++ -g -c -o main.o main.cpp
 
 clean:
-	rm -f pcap_test
+	rm -f pcap-test
 	rm -f *.o
 
